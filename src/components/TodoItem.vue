@@ -1,15 +1,26 @@
 <template>
 	<div class="todo-item">
 		<div class="todo-item-container">
-			<div class="todo-item-content-title">Todo-1</div>
-			<div class="todo-item-content-description">Very Important 1!</div>
+			<div class="todo-item-content-title">{{ title }}</div>
+			<div class="todo-item-content-description">{{ description }}</div>
 		</div>
 	</div>
 </template>
 
 <script>
 export default {
-	name: 'TodoItem'
+	name: 'TodoItem',
+	props: {
+		title: {
+			type: String,
+			required: true,
+			default: 'Default Title'
+		},
+		description: {
+			type: String,
+			required: false
+		}
+	}
 }
 </script>
 

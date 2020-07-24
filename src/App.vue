@@ -2,7 +2,7 @@
 	<div id="app">
 		<div class="todo-wrapper">
 			<div class="todo-container">
-				<TodoList />
+				<TodoList :todos="todos" />
 			</div>
 		</div>
 	</div>
@@ -15,6 +15,27 @@ export default {
 	name: 'App',
 	components: {
 		TodoList
+	},
+	data(){
+		return{
+			todos:[
+				{
+					_id:"1",
+					title:"Todo-1",
+					description:"Go to the forest near the zoo..."
+				},
+				{
+					_id:"2",
+					title:"Todo-2",
+					description:"Go to the forest near the zoo..."
+				},
+				{
+					_id:"3",
+					title:"Todo-3",
+					description:"Go to the forest near the zoo..."
+				}
+			]	
+		}
 	}
 }
 </script>

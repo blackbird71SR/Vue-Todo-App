@@ -1,8 +1,11 @@
 <template>
 	<div class="todo-list">
-		<TodoItem v-bind:title="'Todo - 1'" v-bind:description="'Description-1'" />
-		<TodoItem :title="'Todo - 2'" :description="'Description-2'" />
-		<TodoItem :title="'Todo - 3'" />
+		<TodoItem
+			v-for="todo in todos"
+			:key="todo._id"
+			:title="todo.title"
+			:description="todo.description"
+		/>
 	</div>
 </template>
 
@@ -13,6 +16,12 @@ export default {
 	name: 'TodoList',
 	components: {
 		TodoItem
+	},
+	props:{
+		todos:{
+			required: true,
+			type: Array
+		}
 	}
 }
 </script>

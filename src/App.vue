@@ -62,10 +62,15 @@ export default {
 		width: 100%;
 	}
 	&-container {
+		display: flex;
+		flex-direction: column;
 		width: 400px;
 		min-height: 400px;
 		background-color: #ededed;
 		border-radius: 5px;
+	}
+	&-create-btn-container {
+		margin: 10px;
 	}
 }
 .modal {
@@ -93,5 +98,9 @@ export default {
 	background-color: #795899;
 	color: white;
 	font-weight: bold;
+
+	&:hover {
+		cursor: pointer;
+	}
 }
 </style>

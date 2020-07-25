@@ -1,8 +1,11 @@
 <template>
-	<div class="modal" :class="{'is-active': isOpen}">
-		<div class="modal-content">
-			<span class="close" v-on:click="emitCloseModal">&times;</span>
-			<p>Modal Window</p>
+	<div>
+		<div class="app-button" v-on:click="openModal">Create</div>
+		<div class="modal" :class="{'is-active': isOpen}">
+			<div class="modal-content">
+				<span class="close" v-on:click="closeModal">&times;</span>
+				<p>Modal Window</p>
+			</div>
 		</div>
 	</div>
 </template>
@@ -10,17 +13,17 @@
 <script>
 export default {
 	name:'Modal',
-	props:{
-		isOpen:{
-			type:Boolean,
-			required:true
+	data(){
+		return{
+			isOpen:false
 		}
 	},
 	methods:{
-		emitCloseModal(){
-			this.$emit('modalClosed',
-			//{value:'we are testing!'}
-		)
+		openModal(){
+			this.isOpen = true
+		},
+		closeModal(){
+			this.isOpen = false
 		}
 	}
 }

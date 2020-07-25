@@ -4,11 +4,10 @@
 			<div class="todo-container">
 				<TodoList :todos="todos" />
 				<div class="todo-create-btn-container">
-					<div class="app-button" v-on:click="openModal">Create</div>
+					<Modal />
 				</div>
 			</div>
 		</div>
-		<Modal :isOpen="isModalOpen" v-on:modalClosed="closeModal" />
 	</div>
 </template>
 
@@ -22,7 +21,6 @@ export default {
 	},
 	data(){
 		return{
-			isModalOpen: false,
 			todos:[
 				{
 					_id:"1",
@@ -40,15 +38,6 @@ export default {
 					description:"Go to the forest near the zoo..."
 				}
 			]	
-		}
-	},
-	methods:{
-		openModal(){
-			this.isModalOpen = true
-		},
-		closeModal(data){
-			//alert(data.value) - We can pass data from emit
-			this.isModalOpen = false
 		}
 	}
 }

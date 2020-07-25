@@ -1,21 +1,42 @@
 <template>
-	<div class="modal" :class="{'is-active': isActive}">
-		<div class="modal-content">Modal Window</div>
+	<div class="modal" :class="{'is-active': isOpen}">
+		<div class="modal-content">
+			<span class="close" v-on:click="emitCloseModal">&times;</span>
+			<p>Modal Window</p>
+		</div>
 	</div>
 </template>
 
 <script>
 export default {
-  name:'Modal',
-  data(){ 
-    return{
-      isActive:false
-    }
-  }
+	name:'Modal',
+	props:{
+		isOpen:{
+			type:Boolean,
+			required:true
+		}
+	},
+	methods:{
+		emitCloseModal(){
+			this.$emit('modalClosed',
+			//{value:'we are testing!'}
+		)
+		}
+	}
 }
 </script>
 
 <style lang='scss' scoped>
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 20px;
+	font-weight: bold;
+	line-height: 8px;
+	&:hover {
+		cursor: pointer;
+	}
+}
 .modal {
 	display: none;
 	position: fixed;

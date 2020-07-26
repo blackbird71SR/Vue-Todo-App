@@ -4,7 +4,7 @@
 			<div class="todo-container">
 				<TodoList :todos="todos" />
 				<div class="todo-create-btn-container">
-					<TodoCreate />
+					<TodoCreate @formSubmitted="createTodo" />
 				</div>
 			</div>
 		</div>
@@ -38,6 +38,11 @@ export default {
 					description:"Go to the forest near the zoo..."
 				}
 			]	
+		}
+	},
+	methods:{
+		createTodo(todo){
+			this.todos.push(todo)
 		}
 	}
 }

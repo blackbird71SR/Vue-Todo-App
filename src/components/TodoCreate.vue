@@ -9,7 +9,7 @@
 				<label for="description" class="label">Description</label>
 				<textarea v-model="form.description" name="description" cols="30" rows="5"></textarea>
 			</div>
-			<button v-on:click="createTodo" type="button" class="app-button is-primary">Confirm</button>
+			<button v-on:click="submitForm" type="button" class="app-button is-primary">Confirm</button>
 		</form>
 	</Modal>
 </template>
@@ -30,9 +30,14 @@ export default {
 		}
 	},
 	methods:{
-		createTodo(){
-			console.log(this.form)
-		}
+		submitForm(){
+      this.$emit('formSubmitted', {...this.form})
+      this.resetForm()
+    },
+    resetForm(){
+      this.form.title = ''
+      this.form.description = ''
+    }
 	}
 }
 </script>

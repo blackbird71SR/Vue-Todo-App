@@ -4,6 +4,8 @@
 			<div class="todo-item-content-title">{{ title }}</div>
 			<div class="todo-item-content-description">{{ description }}</div>
 		</div>
+		<button v-on:click="editTodo" class="app-button is-warning">Edit</button>
+		<button v-on:click="deleteTodo" class="app-button is-danger">Delete</button>
 	</div>
 </template>
 
@@ -20,11 +22,26 @@ export default {
 			type: String,
 			required: false
 		}
+	},
+	methods:{
+		editTodo(){
+			alert('Edit Todo');
+		},
+		deleteTodo(){
+			alert('Delete Todo')
+		}
 	}
 }
 </script>
 
 <style lang="scss">
+.app-button {
+	font-size: 15px;
+	&.is-warning {
+		margin-right: 5px;
+		margin-top: 10px;
+	}
+}
 .todo {
 	&-item {
 		background-color: gray;
@@ -36,6 +53,8 @@ export default {
 		font-size: 23px;
 
 		&-content {
+			margin-bottom: 10px;
+
 			&-title {
 				font-weight: bold;
 			}

@@ -58,7 +58,13 @@ export default {
 }
 
 .is-primary {
-	background-color: greenyellow !important;
+	background-color: #47ca47 !important;
+}
+.is-warning {
+	background-color: #ffa753 !important;
+}
+.is-danger {
+	background-color: #ff5a5a !important;
 }
 
 .todo {

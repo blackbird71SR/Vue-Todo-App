@@ -7,13 +7,13 @@
 				<form action class="app-form">
 					<div class="form-control">
 						<label for="title" class="label">Title</label>
-						<input type="text" name="title" class="form-input" />
+						<input v-model="form.title" type="text" name="title" class="form-input" />
 					</div>
 					<div class="form-control">
 						<label for="description" class="label">Description</label>
-						<input type="text" name="description" class="form-input" />
+						<input v-model="form.description" type="text" name="description" class="form-input" />
 					</div>
-					<button type="button" class="app-button is-primary">Confirm</button>
+					<button v-on:click="createTodo" type="button" class="app-button is-primary">Confirm</button>
 				</form>
 			</div>
 		</div>
@@ -25,7 +25,11 @@ export default {
 	name:'Modal',
 	data(){
 		return{
-			isOpen:false
+			isOpen:false,
+			form:{
+				title:'',
+				description:''
+			}
 		}
 	},
 	methods:{
@@ -34,6 +38,9 @@ export default {
 		},
 		closeModal(){
 			this.isOpen = false
+		},
+		createTodo(){
+			console.log(this.form)
 		}
 	}
 }

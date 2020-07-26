@@ -3,7 +3,7 @@
 		<div class="app-button" v-on:click="openModal">Create</div>
 		<div class="modal" :class="{'is-active': isOpen}">
 			<div class="modal-content">
-				<span class="close" v-on:click="closeModal">&times;</span>
+				<span class="close" v-on:click="close">&times;</span>
 				<slot />
 			</div>
 		</div>
@@ -24,7 +24,10 @@ export default {
 		},
 		closeModal(){
 			this.isOpen = false
-		}
+		},
+		close(){
+			this.isOpen = false
+		} 
 	}
 }
 </script>

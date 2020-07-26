@@ -4,7 +4,17 @@
 		<div class="modal" :class="{'is-active': isOpen}">
 			<div class="modal-content">
 				<span class="close" v-on:click="closeModal">&times;</span>
-				<p>Modal Window</p>
+				<form action class="app-form">
+					<div class="form-control">
+						<label for="title" class="label">Title</label>
+						<input type="text" name="title" class="form-input" />
+					</div>
+					<div class="form-control">
+						<label for="description" class="label">Description</label>
+						<input type="text" name="description" class="form-input" />
+					</div>
+					<button type="button" class="app-button is-primary">Confirm</button>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -61,5 +71,22 @@ export default {
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%;
+	text-align: left;
+}
+.app-form {
+	.label {
+		display: block;
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.form-input {
+		padding: 10px;
+		font-size: 17px;
+	}
+
+	.form-control {
+		margin-bottom: 15px;
+	}
 }
 </style>

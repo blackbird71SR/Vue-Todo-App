@@ -4,7 +4,7 @@
 			<div class="todo-container">
 				<TodoList :todos="todos" />
 				<div class="todo-create-btn-container">
-					<Modal />
+					<TodoCreate />
 				</div>
 			</div>
 		</div>
@@ -13,11 +13,11 @@
 
 <script>
 import TodoList from './components/TodoList'
-import Modal from './components/Modal'
+import TodoCreate from './components/TodoCreate'
 export default {
 	name: 'App',
 	components: {
-		TodoList, Modal
+		TodoList, TodoCreate
 	},
 	data(){
 		return{
@@ -84,6 +84,23 @@ export default {
 
 	&:hover {
 		cursor: pointer;
+	}
+}
+
+.app-form {
+	.label {
+		display: block;
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+	.form-input {
+		padding: 10px;
+		font-size: 17px;
+	}
+
+	.form-control {
+		margin-bottom: 15px;
 	}
 }
 </style>

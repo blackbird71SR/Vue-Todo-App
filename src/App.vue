@@ -14,6 +14,9 @@
 <script>
 import TodoList from './components/TodoList'
 import TodoCreate from './components/TodoCreate'
+
+import store from './store'
+
 export default {
 	name: 'App',
 	components: {
@@ -21,28 +24,12 @@ export default {
 	},
 	data(){
 		return{
-			todos:[
-				{
-					_id:"1",
-					title:"Todo-1",
-					description:"Go to the forest near the zoo..."
-				},
-				{
-					_id:"2",
-					title:"Todo-2",
-					description:"Go to the forest near the zoo..."
-				},
-				{
-					_id:"3",
-					title:"Todo-3",
-					description:"Go to the forest near the zoo..."
-				}
-			]	
+			todos: store.state.todos
 		}
 	},
 	methods:{
 		createTodo(todo){
-			this.todos.push(todo)
+			store.createTodo(todo)
 		}
 	}
 }

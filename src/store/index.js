@@ -18,12 +18,19 @@ const store = {
 			}
 		]
 	},
-	createTodo(todo) {
-		todo._id = Math.random()
-			.toString(36)
-			.substr(2, 7)
-		this.state.todos.push(todo)
+	actions: {
+		createTodo(state, todo) {
+			todo._id = Math.random()
+				.toString(36)
+				.substr(2, 7)
+			state.todos.push(todo)
+		}
 	}
+}
+
+store.dispatch = function(action, payload) {
+	if (!this.actions[action]) throw new Error(`Action ${action} is not defined`)
+	return this.actions[action](this.state, payload)
 }
 
 export default store

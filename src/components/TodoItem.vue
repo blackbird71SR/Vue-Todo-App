@@ -60,7 +60,7 @@ export default {
 			this.editMode = false
 		},
 		deleteTodo(){
-			alert('Delete Todo')
+			store.dispatch('deleteTodo',this.todo._id)
 		}
 	}
 }

@@ -38,21 +38,21 @@ const store = {
 				.toString(36)
 				.substr(2, 7)
 			state.todos.push(todo)
-			persistData(state.todos)
+			return state.todos
 		},
 		updateTodo(state, todoToUpdate) {
 			const index = state.todos.findIndex((todo) => {
 				return todo._id === todoToUpdate._id
 			})
 			Vue.set(state.todos, index, todoToUpdate)
-			persistData(state.todos)
+			return state.todos
 		},
 		deleteTodo(state, todoId) {
 			const index = state.todos.findIndex((todo) => {
 				return todo._id === todoId
 			})
 			state.todos.splice(index, 1)
-			persistData(state.todos)
+			return state.todos
 		}
 	}
 }
@@ -64,7 +64,10 @@ function persistData(value) {
 
 store.dispatch = function(action, payload) {
 	if (!this.actions[action]) throw new Error(`Action ${action} is not defined`)
-	return this.actions[action](this.state, payload)
+	const result = this.actions[action](this.state, payload)
+	if (!result) return
+	persistData(result)
+	return result
 }
 
 export default store

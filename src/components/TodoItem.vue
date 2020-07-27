@@ -1,11 +1,25 @@
 <template>
-	<div class="todo-item">
+	<div v-if="!editMode" class="todo-item">
 		<div class="todo-item-container">
 			<div class="todo-item-content-title">{{ title }}</div>
 			<div class="todo-item-content-description">{{ description }}</div>
 		</div>
 		<button v-on:click="editTodo" class="app-button is-warning">Edit</button>
 		<button v-on:click="deleteTodo" class="app-button is-danger">Delete</button>
+	</div>
+	<div v-else class="todo-item">
+		<form action class="app-form">
+			<div class="form-control">
+				<label for="title" class="label">Title</label>
+				<input v-bind:value="title" type="text" name="title" class="form-input" />
+			</div>
+			<div class="form-control">
+				<label for="description" class="label">Description</label>
+				<textarea v-bind:value="description" name="description" cols="30" rows="5"></textarea>
+			</div>
+			<button v-on:click.prevent="editMode" class="app-button is-warning">Update</button>
+			<button v-on:click.prevent="editMode = false" class="app-button is-danger">Cancel</button>
+		</form>
 	</div>
 </template>
 
@@ -23,9 +37,14 @@ export default {
 			required: false
 		}
 	},
+	data(){
+		return{
+			editMode:false
+		}
+	},
 	methods:{
 		editTodo(){
-			alert('Edit Todo');
+			this.editMode = true
 		},
 		deleteTodo(){
 			alert('Delete Todo')
